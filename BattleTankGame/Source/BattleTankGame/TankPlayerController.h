@@ -22,7 +22,7 @@ public:
 private:
 	ATank* GetControlledTank() const;
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
-	bool GetVectorHitLocation(FVector& OutHitLocation) const;
+	bool GetVectorHitLocation(FVector& OutHitLocation, FVector HitLocation) const;
 
 	//To tell the tank to aim at the crosshairs
 	void AimTowardsCrosshairs();
@@ -31,6 +31,6 @@ private:
 		float CrosshairXLocation = 0.5;
 	UPROPERTY(EditAnywhere)
 		float CrosshairYLocation = 0.33;
-
-	float Range = 1000000.f;
+	UPROPERTY(EditAnywhere)
+		float Range = 1000000.f;
 };
