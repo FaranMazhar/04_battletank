@@ -17,6 +17,7 @@ class BATTLETANKGAME_API ATankAIController : public AAIController
 
 public:
 	void BeginPlay() override;
+	void Tick(float DeltaSeconds) override;
 
 	ATank* GetPossessedTank() const;
 	//Finding the player tank that the AI tank needs to kill. 

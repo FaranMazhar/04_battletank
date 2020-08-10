@@ -6,6 +6,7 @@
 
 void ATankAIController::BeginPlay()
 {
+	Super::BeginPlay();
 	auto PlayerTank = GetPlayerTank();   
 	if (PlayerTank)
 	{
@@ -14,6 +15,15 @@ void ATankAIController::BeginPlay()
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("No Tank controlled by AI"));
+	}
+}
+
+void ATankAIController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	if(GetPlayerTank())
+	{
+		GetPossessedTank()->AimAt(GetPlayerTank()->GetTargetLocation());
 	}
 }
 
