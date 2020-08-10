@@ -21,7 +21,7 @@ protected:
 	virtual void BeginPlay() override;
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -29,5 +29,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void AimAt(FVector HitLocation);
+	UFUNCTION(BlueprintCallable, Category = Setup)
+		void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 
+private:
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float LaunchSpeed = 10000.0;
 };

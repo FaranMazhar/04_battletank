@@ -36,6 +36,10 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ATank::AimAt(FVector HitLocation)
 {
-	auto OurTank = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%s aiming at: %s"), *OurTank, *HitLocation.ToString());
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+}
+
+void ATank::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+{
+	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
