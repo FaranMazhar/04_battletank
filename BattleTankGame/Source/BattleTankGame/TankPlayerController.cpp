@@ -40,7 +40,6 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	if (DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, CameraWorldLocataion, HitDirection))
 	{
 		GetVectorHitLocation(OutHitLocation, HitDirection);
-		//UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *OutHitLocation.ToString())
 	}
 	return true;
 }
@@ -71,6 +70,4 @@ void ATankPlayerController::AimTowardsCrosshairs()
 	{
 		GetControlledTank()->AimAt(HitLocation);
 	}
-	
-	//TODO tell the tank to aim towards the crosshairs.
 }
