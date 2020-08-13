@@ -3,11 +3,14 @@
 
 #include "TankBarrel.h"
 
-
-
 void UTankBarrel::ElevateBarrel(float DegreesPerSecond)
 {
 	auto Time = GetWorld()->GetTimeSeconds();
 	UE_LOG(LogTemp, Warning, TEXT("%f: Aim Solution Found."), Time);
+	DegreesPerSecond = FMath::Clamp<float>(DegreesPerSecond, -1, 1);
+	auto ElevationChange = DegreesPerSecond * MaxDegreesPerSecond * GetWorld()->DeltaTimeSeconds;
+	auto RawNewElevation = GetRelativeRotation().Pitch + ElevationChange;
+	auto Elevation = FMath::Clamp<float>(RawNewElevation, MinElevation, MaxElevation);
+	SetRelativeRotation(FRotator(Elevation, 0, 0));
 	//rotate barrel just the right amount with barrel rotation speed. 
 }
