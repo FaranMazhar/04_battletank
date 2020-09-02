@@ -32,6 +32,8 @@ public:
 		void SetBarrelReference(UTankBarrel* BarrelToSet);
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void SetTurretReference(UTankTurret* TurretToSet);
+	UFUNCTION(BlueprintCallable)
+		void Fire();
 
 private:
 	UPROPERTY(EditAnywhere, Category = Firing)

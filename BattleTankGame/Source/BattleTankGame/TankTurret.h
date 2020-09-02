@@ -20,8 +20,4 @@ public:
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
 		float MaxRotationSpeed = 10.0;
-	/*UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxRotation = 360.0;
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float MinRotation = 0.0;*/
 };
