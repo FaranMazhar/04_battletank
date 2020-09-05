@@ -1,14 +1,16 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankAimingComponent.h"
+#include "TankBarrel.h"
+#include "Projectile.h"
 #include "Tank.h"
 
-class UTankBarrel; //Forward Declaration
+
 
 // Sets default values
 ATank::ATank()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
 	//No need to protect pointers when constructing.
@@ -25,7 +27,6 @@ void ATank::BeginPlay()
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
 void ATank::AimAt(FVector HitLocation)
@@ -36,6 +37,7 @@ void ATank::AimAt(FVector HitLocation)
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+	Barrel = BarrelToSet;
 }
 void ATank::SetTurretReference(UTankTurret* TurretToSet)
 {
@@ -43,5 +45,12 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 }
 void ATank::Fire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Firing method called"))
+		if (!Barrel) { return; }
+	//Spawn a projectile at socket location
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+		ProjectileBlueprint,
+		Barrel->GetSocketLocation(FName("Projectile")),
+		Barrel->GetSocketRotation(FName("Projectile"))
+		);
+	Projectile->LaunchProjectile(LaunchSpeed);
 }

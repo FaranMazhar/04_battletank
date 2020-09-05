@@ -8,6 +8,7 @@
 #include "Tank.generated.h"
 
 class UTankAimingComponent;
+class AProjectile;
 
 UCLASS()
 class BATTLETANKGAME_API ATank : public APawn
@@ -22,6 +23,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	UTankAimingComponent* TankAimingComponent = nullptr;
+	
 
 public:
 	// Called to bind functionality to input
@@ -38,4 +40,8 @@ public:
 private:
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 10000.0;
+	UPROPERTY(EditAnywhere, Category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint;
+	//Local Barrel reference
+	UTankBarrel* Barrel = nullptr;
 };
