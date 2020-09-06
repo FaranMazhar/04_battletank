@@ -44,4 +44,7 @@ private:
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 	//Local Barrel reference
 	UTankBarrel* Barrel = nullptr;
+
+	float ReloadTime = 3;
+	double LastFireTime = 0;
 };
