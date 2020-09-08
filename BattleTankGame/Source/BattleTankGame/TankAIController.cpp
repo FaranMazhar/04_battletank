@@ -18,6 +18,6 @@ void ATankAIController::Tick(float DeltaSeconds)
 	{
 		AITank->AimAt(PlayerTank->GetActorLocation());
 		auto time = GetWorld()->GetRealTimeSeconds();
-		AITank->Fire(); //TODO Don't fire every Frame.
+		AITank->Fire();
 	}
 }
