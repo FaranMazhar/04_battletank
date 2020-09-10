@@ -17,4 +17,7 @@ class BATTLETANKGAME_API UTankTracks : public UStaticMeshComponent
 public:
 	UFUNCTION(BlueprintCallable, Category = Input)
 		void SetThrottle(float ThrottleSpeed);
+	//Tank's maximum driving force in newtons.
+	UPROPERTY(EditDefaultsOnly, Category = Movement)
+	float MaxDrivingForce = 400000;
 };
