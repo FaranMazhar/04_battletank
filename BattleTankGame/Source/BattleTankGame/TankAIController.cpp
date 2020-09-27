@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Tank.h"
 #include "TankAIController.h"
+#include "Tank.h"
 
 
 void ATankAIController::BeginPlay()
@@ -16,6 +16,7 @@ void ATankAIController::Tick(float DeltaSeconds)
 	auto AITank = Cast<ATank>(GetPawn());
 	if(PlayerTank)
 	{
+		MoveToActor(PlayerTank, AcceptanceRadius);
 		AITank->AimAt(PlayerTank->GetActorLocation());
 		auto time = GetWorld()->GetRealTimeSeconds();
 		AITank->Fire();

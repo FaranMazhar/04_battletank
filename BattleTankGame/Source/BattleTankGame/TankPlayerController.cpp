@@ -1,19 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Tank.h"
 #include "TankPlayerController.h"
+#include "Tank.h"
+
 
 void ATankPlayerController::BeginPlay()
 {
 	auto Tank = GetControlledTank();
-	if (Tank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Controlled Tank: %s"), *Tank->GetName());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("No Tank possessed by controller"));
-	}
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
