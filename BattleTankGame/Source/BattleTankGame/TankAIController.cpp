@@ -13,12 +13,12 @@ void ATankAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	auto PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+
+	if (!ensure(PlayerTank)) { return; }
+
 	auto AITank = Cast<ATank>(GetPawn());
-	if(PlayerTank)
-	{
-		MoveToActor(PlayerTank, AcceptanceRadius);
-		AITank->AimAt(PlayerTank->GetActorLocation());
-		auto time = GetWorld()->GetRealTimeSeconds();
-		AITank->Fire();
-	}
+	MoveToActor(PlayerTank, AcceptanceRadius);
+	AITank->AimAt(PlayerTank->GetActorLocation());
+	auto time = GetWorld()->GetRealTimeSeconds();
+	AITank->Fire();
 }
