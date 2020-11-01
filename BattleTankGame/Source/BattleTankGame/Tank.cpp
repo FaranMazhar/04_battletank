@@ -17,8 +17,7 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();  //Needed for BP begin play to work.
-
-	UE_LOG(LogTemp, Warning, TEXT("SXYTHE: Begin Play Called.\n"))
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 void ATank::AimAt(FVector HitLocation)
