@@ -10,6 +10,7 @@ void ATankAIController::BeginPlay()
 void ATankAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+<<<<<<< HEAD
 	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 
 	if (!ensure(PlayerTank)) { return; }
@@ -19,4 +20,15 @@ void ATankAIController::Tick(float DeltaSeconds)
 	AITank->AimAt(PlayerTank->GetActorLocation());
 	auto time = GetWorld()->GetRealTimeSeconds();
 	AITank->Fire();
+=======
+	auto PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+	auto AITank = Cast<ATank>(GetPawn());
+	if(PlayerTank)
+	{
+		MoveToActor(PlayerTank, AcceptanceRadius);
+		AITank->AimAt(PlayerTank->GetActorLocation());
+		auto time = GetWorld()->GetRealTimeSeconds();
+		AITank->Fire();
+	}
+>>>>>>> master
 }

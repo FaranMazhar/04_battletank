@@ -7,6 +7,11 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
+<<<<<<< HEAD
+=======
+class UTankAimingComponent;
+class UTankMovementComponent;
+>>>>>>> master
 class AProjectile;
 class UTankBarrel;
 
@@ -18,8 +23,21 @@ class BATTLETANKGAME_API ATank : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ATank();
-	virtual void BeginPlay() override;
 
+<<<<<<< HEAD
+=======
+protected:
+	// Called when the game starts or when spawned
+	UPROPERTY(BlueprintReadOnly)
+		UTankAimingComponent* TankAimingComponent = nullptr;
+	UPROPERTY(BlueprintReadOnly)
+		UTankMovementComponent* TankMovementComponent = nullptr;
+
+
+public:
+	void AimAt(FVector HitLocation);
+
+>>>>>>> master
 	UFUNCTION(BlueprintCallable)
 		void Fire();
 

@@ -16,6 +16,8 @@ enum class EFiringStatus : uint8
 	Locked
 };
 
+//Forward declarations
+
 class UTankBarrel; 
 class UTankTurret; 
 
@@ -31,7 +33,7 @@ public:
 	void AimAt(FVector HitLocation);
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-		EFiringStatus FiringState = EFiringStatus::Locked;
+		EFiringStatus FiringState = EFiringStatus::Reloading;
 private:
 	UTankBarrel* Barrel;
 	UTankTurret* Turret;
