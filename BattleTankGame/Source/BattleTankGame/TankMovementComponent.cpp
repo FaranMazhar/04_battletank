@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-#include "TankTracks.h"
 #include "TankMovementComponent.h"
+#include "TankTracks.h"
 #include "Math/Vector.h"
 
 void UTankMovementComponent::Initialise(UTankTracks* RightTrackToSet, UTankTracks* LeftTrackToSet)

@@ -16,6 +16,8 @@ enum class EFiringStatus : uint8
 	Locked
 };
 
+//Forward declarations
+
 class UTankBarrel; 
 class UTankTurret; 
 

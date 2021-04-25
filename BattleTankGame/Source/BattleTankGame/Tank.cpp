@@ -12,7 +12,17 @@ ATank::ATank()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+<<<<<<< HEAD
 
+=======
+	UE_LOG(LogTemp, Warning, TEXT("SXYTHE: Constructor called.\n"))
+}
+
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();  //Needed for BP begin play to work.
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+>>>>>>> dedce7ecf395fccabb5ed7a7080b58bbaf5c6fd1
 }
 
 void ATank::AimAt(FVector HitLocation)
