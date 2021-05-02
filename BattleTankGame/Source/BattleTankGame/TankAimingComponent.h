@@ -37,10 +37,12 @@ public:
 	void AimAt(FVector HitLocation);
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-		EFiringStatus FiringState = EFiringStatus::Locked;
+		EFiringStatus FiringState = EFiringStatus::Reloading;
 private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
+	virtual void BeginPlay() override;
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	void MoveBarrel(FVector AimDirection);
 	void MoveTurret(FVector AimDirection);
