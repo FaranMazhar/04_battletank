@@ -23,5 +23,5 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
 		float MaxElevation = 40;
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
-		float MinElevation = 0; 
+		float MinElevation = 0;
 };

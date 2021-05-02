@@ -10,5 +10,4 @@ void UTankBarrel::ElevateBarrel(float DegreesPerSecond)
 	auto RawNewElevation = GetRelativeRotation().Pitch + ElevationChange;
 	auto Elevation = FMath::Clamp<float>(RawNewElevation, MinElevation, MaxElevation);
 	SetRelativeRotation(FRotator(Elevation, 0, 0));
-	//rotate barrel just the right amount with barrel rotation speed. 
 }
