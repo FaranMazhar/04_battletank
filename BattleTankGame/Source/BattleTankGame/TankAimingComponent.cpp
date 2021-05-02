@@ -2,6 +2,7 @@
 
 
 #include "TankAimingComponent.h"
+#include "Projectile.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
 
@@ -17,6 +18,24 @@ void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* Tur
 {
 	Barrel = BarrelToSet;
 	Turret = TurretToSet;
+}
+
+void UTankAimingComponent::Fire()
+{
+	if (!ensure(Barrel && ProjectileBlueprint)) { return; }
+	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime > ReloadTime);
+	if (bIsReloaded)
+	{
+		//Spawn a projectile at socket location
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+			ProjectileBlueprint,
+			Barrel->GetSocketLocation(FName("Projectile")),
+			Barrel->GetSocketRotation(FName("Projectile"))
+			);
+		Projectile->LaunchProjectile(LaunchSpeed);
+		LastFireTime = FPlatformTime::Seconds();
+	}
+
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation)
@@ -41,10 +60,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 		auto TankName = GetOwner()->GetName();
 		MoveBarrel(AimDirection);
 		MoveTurret(AimDirection);
-	}
-	else
-	{
-		//UE_LOG(LogTemp, Warning, TEXT("No Aim Solution Found."));
 	}
 }
 
