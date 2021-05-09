@@ -85,6 +85,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 	}
 }
 
+EFiringStatus UTankAimingComponent::GetFiringState()const
+{
+	return FiringState;
+}
 
 void UTankAimingComponent::MoveBarrel(FVector _AimDirection)
 {
