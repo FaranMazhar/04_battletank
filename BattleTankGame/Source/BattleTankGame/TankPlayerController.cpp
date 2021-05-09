@@ -54,7 +54,7 @@ bool ATankPlayerController::GetVectorHitLocation(FVector& OutHitLocation, FVecto
 
 void ATankPlayerController::AimTowardsCrosshairs()
 {
-
+	if (!GetPawn()) { return; }
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (!ensure(AimingComponent)) { return; }
 
