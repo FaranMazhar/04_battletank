@@ -29,9 +29,9 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	FVector CameraWorldLocataion, HitDirection;
 	if (DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, CameraWorldLocataion, HitDirection))
 	{
-		GetVectorHitLocation(OutHitLocation, HitDirection);
+		return GetVectorHitLocation(OutHitLocation, HitDirection);
 	}
-	return true;
+	return false;
 }
 
 bool ATankPlayerController::GetVectorHitLocation(FVector& OutHitLocation, FVector LookDirection) const
