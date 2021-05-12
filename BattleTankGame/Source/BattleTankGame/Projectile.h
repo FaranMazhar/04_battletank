@@ -43,4 +43,6 @@ public:
 
 	UPROPERTY(EditDefaultsOnly)
 		float DestroyDelay = 2.f;
+	UPROPERTY(VisibleAnywhere)
+		float ProjectileDamage = 20.f;
 };
