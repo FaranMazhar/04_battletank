@@ -19,6 +19,8 @@ private:
 	AProjectile();
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+	UFUNCTION()
+		void OnTimerExpire();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -38,4 +40,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		URadialForceComponent* ExplosionForce;
+
+	UPROPERTY(EditDefaultsOnly)
+		float DestroyDelay = 2.f;
 };
