@@ -7,6 +7,7 @@
 #include "Projectile.generated.h"
 
 class UProjectileMovementComponent;
+class URadialForceComponent;
 
 UCLASS()
 class BATTLETANKGAME_API AProjectile : public AActor
@@ -34,4 +35,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		UParticleSystemComponent* ImpactBlast;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+		URadialForceComponent* ExplosionForce;
 };
