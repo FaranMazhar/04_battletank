@@ -2,6 +2,7 @@
 
 #include "TankPlayerController.h"
 #include "TankAimingComponent.h"
+#include "Tank.h"
 
 void ATankPlayerController::BeginPlay()
 {
@@ -63,4 +64,21 @@ void ATankPlayerController::AimTowardsCrosshairs()
 	{
 		AimingComponent->AimAt(HitLocation);
 	}
+}
+
+void ATankPlayerController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+
+	if (InPawn)
+	{
+		auto PlayerTank = Cast<ATank>(InPawn);
+		if (!ensure(PlayerTank)) { return; }
+		PlayerTank->OnDeath.AddUniqueDynamic(this, &ATankPlayerController::OnPlayerTankDeath);
+	}
+}
+
+void ATankPlayerController::OnPlayerTankDeath()
+{
+	StartSpectatingOnly();
 }

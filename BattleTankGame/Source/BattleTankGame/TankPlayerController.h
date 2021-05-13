@@ -29,6 +29,11 @@ private:
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 	bool GetVectorHitLocation(FVector& OutHitLocation, FVector HitLocation) const;
 
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+		void OnPlayerTankDeath();
+
 	//To tell the tank to aim at the crosshairs
 	void AimTowardsCrosshairs();
 
