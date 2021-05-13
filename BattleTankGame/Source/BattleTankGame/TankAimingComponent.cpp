@@ -16,6 +16,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::BeginPlay()
 {
+	Super::BeginPlay();
 	//To make an inital reload before first fire.
 	LastFireTime = FPlatformTime::Seconds(); 
 }
